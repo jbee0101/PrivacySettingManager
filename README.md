@@ -24,11 +24,11 @@ Data access is encapsulated in a repository pattern to be able to switch between
 - [x] Separate **ViewModels** for Home and Detail screen
 - [x] Hilt used for Dependency Injection
 - [x] Fully reactive with **StateFlow** in ViewModels
+- [x] Improve UI
 
 
 ## What's Remaining / Future Improvements
 
-- [ ] Improve UI (e.g., AppBar with dynamic titles and back navigation)
 - [ ] Add **unit tests** for ViewModels and DataStore logic
 - [ ] Add **UI tests** using Jetpack Compose Testing
 - [ ] Add meaningful **inline code comments** for clarity and maintainability

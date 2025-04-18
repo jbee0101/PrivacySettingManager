@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.privacysettingmanager.ui.screens.BaseScreen
 import com.example.privacysettingmanager.ui.screens.DetailScreen
 import com.example.privacysettingmanager.ui.screens.HomeScreen
 import com.example.privacysettingmanager.viewmodel.DetailViewModel
@@ -20,10 +21,12 @@ fun AppNavGraph(navController: NavHostController) {
 
         composable("home") {
             val viewModel: HomeScreenViewModel = hiltViewModel()
-            HomeScreen(viewModel = viewModel, onServiceClick = { service ->
-                val serviceJson = Uri.encode(Gson().toJson(service))
-                navController.navigate("details/$serviceJson")
-            })
+            BaseScreen {
+                HomeScreen(viewModel = viewModel, onServiceClick = { service ->
+                    val serviceJson = Uri.encode(Gson().toJson(service))
+                    navController.navigate("details/$serviceJson")
+                })
+            }
         }
 
         composable(
@@ -33,7 +36,12 @@ fun AppNavGraph(navController: NavHostController) {
             })
         ) {
             val viewModel: DetailViewModel = hiltViewModel()
-            DetailScreen(viewModel = viewModel)
+            BaseScreen(
+                showBackButton = true,
+                onBackClick = { navController.popBackStack() }
+            ) {
+                DetailScreen(viewModel = viewModel)
+            }
         }
     }
 }
