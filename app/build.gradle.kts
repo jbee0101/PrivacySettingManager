@@ -17,7 +17,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.privacysettingmanager.CustomTestRunner"
     }
 
     buildTypes {
@@ -39,6 +40,18 @@ android {
     buildFeatures {
         compose = true
     }
+
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+                "META-INF/DEPENDENCIES",
+                "META-INF/AL2.0",
+                "META-INF/LGPL2.1"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -54,6 +67,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     // Hilt and ViewModel
     implementation(libs.hilt.android)
+    implementation(libs.core.ktx)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     // Retrofit and Gson
@@ -69,11 +83,24 @@ dependencies {
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
+    androidTestImplementation(libs.ui.test.junit4)
+    androidTestImplementation (libs.hilt.android.testing)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation (libs.androidx.core)
+    androidTestImplementation (libs.mockito.android)
+    androidTestImplementation (libs.mockito.kotlin)
+    androidTestImplementation(libs.mockk.android)
+    kspAndroidTest (libs.hilt.compiler)
+    testImplementation(libs.junit)
+    testImplementation(kotlin("test"))
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
     debugImplementation(libs.androidx.ui.test.manifest)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 }

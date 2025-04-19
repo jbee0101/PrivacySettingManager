@@ -10,8 +10,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * HomeScreenViewModel is a ViewModel responsible for managing UI-related data
+ * for the Home screen. It uses Hilt for dependency injection and retrieves data from the ServicesRepository.
+ *
+ * @param repository ServicesRepository for calling Api methods.
+ */
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(
+open class HomeScreenViewModel @Inject constructor(
     private val repository: ServicesRepository
 ) : ViewModel() {
 

@@ -24,6 +24,12 @@ import coil.compose.AsyncImage
 import com.example.privacysettingmanager.data.model.Service
 import com.example.privacysettingmanager.viewmodel.HomeScreenViewModel
 
+/**
+ * Composable function representing the Home screen. It displays a list of services in a scrollable column.
+ *
+ * @param viewModel HomeScreenViewModel that provides the list of services.
+ * @param onServiceClick Callback triggered when the "Manage" button is clicked.
+ */
 @Composable
 fun HomeScreen(
     viewModel: HomeScreenViewModel,

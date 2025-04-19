@@ -25,13 +25,10 @@ Data access is encapsulated in a repository pattern to be able to switch between
 - [x] Hilt used for Dependency Injection
 - [x] Fully reactive with **StateFlow** in ViewModels
 - [x] Improve UI
+- [x] Added **unit tests** for ViewModels, Repository and DataStore logic
+- [x] Added **UI tests** for HomeScreen, DetailScreen and Navigation
+- [x] Added meaningful **code comments** for clarity and maintainability
 
-
-## What's Remaining / Future Improvements
-
-- [ ] Add **unit tests** for ViewModels and DataStore logic
-- [ ] Add **UI tests** using Jetpack Compose Testing
-- [ ] Add meaningful **inline code comments** for clarity and maintainability
 
 ## How to Run the Project
 1. Clone the repository.

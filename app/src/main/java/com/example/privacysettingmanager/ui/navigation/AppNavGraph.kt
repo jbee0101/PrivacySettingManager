@@ -1,6 +1,5 @@
 package com.example.privacysettingmanager.ui.navigation
 
-import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -14,7 +13,13 @@ import com.example.privacysettingmanager.ui.screens.HomeScreen
 import com.example.privacysettingmanager.viewmodel.DetailViewModel
 import com.example.privacysettingmanager.viewmodel.HomeScreenViewModel
 import com.google.gson.Gson
+import java.net.URLEncoder
 
+/**
+ * Sets up the navigation graph for the app using Jetpack Compose Navigation.
+ *
+ * @param navController The NavHostController that controls app navigation.
+ */
 @Composable
 fun AppNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
@@ -23,7 +28,7 @@ fun AppNavGraph(navController: NavHostController) {
             val viewModel: HomeScreenViewModel = hiltViewModel()
             BaseScreen {
                 HomeScreen(viewModel = viewModel, onServiceClick = { service ->
-                    val serviceJson = Uri.encode(Gson().toJson(service))
+                    val serviceJson = URLEncoder.encode(Gson().toJson(service), "utf-8")
                     navController.navigate("details/$serviceJson")
                 })
             }

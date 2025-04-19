@@ -14,8 +14,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.net.URLDecoder
 import javax.inject.Inject
 
+/**
+ * DetailViewModel is responsible for managing the state and logic for the Detail screen. It uses Hilt
+ * for dependency injection and interacts with DataStoreManager.
+ *
+ * @param savedStateHandle  SavedStateHandle used to retrieve navigation arguments
+ * @param dataStoreManager DataStoreManager to persist and retrieve toggle states.
+ */
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
@@ -27,7 +35,7 @@ class DetailViewModel @Inject constructor(
 
     init {
         val encodedJson = savedStateHandle.get<String>("serviceJson") ?: ""
-        val json = Uri.decode(encodedJson)
+        val json = URLDecoder.decode(encodedJson, "utf-8")
         val serviceObj = Gson().fromJson(json, Service::class.java)
 
         viewModelScope.launch {
@@ -39,6 +47,11 @@ class DetailViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Function to toggle the state of a specific setting.
+     *
+     * @param settingId contains the id of the setting which needs to be toggle.
+     */
     fun toggleSetting(settingId: String) {
         _service.update { current ->
             current?.copy(

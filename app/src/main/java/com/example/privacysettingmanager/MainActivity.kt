@@ -17,6 +17,9 @@ import com.example.privacysettingmanager.ui.theme.PrivacySettingManagerTheme
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * MainActivity is the entry point of the application.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

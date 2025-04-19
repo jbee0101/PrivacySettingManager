@@ -16,6 +16,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * A reusable scaffold layout that provides a consistent top app bar across screens.
+ *
+ * @param title The title to display in the TopAppBar.
+ * @param showBackButton Whether to show a back button on the top bar.
+ * @param onBackClick Callback to be invoked when the back button is clicked.
+ * @param content The main screen content to be shown below the app bar.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BaseScreen(
