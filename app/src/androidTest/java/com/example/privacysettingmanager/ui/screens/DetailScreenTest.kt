@@ -9,7 +9,6 @@ import androidx.compose.ui.test.performClick
 import com.example.privacysettingmanager.data.model.Service
 import com.example.privacysettingmanager.data.model.Setting
 import com.example.privacysettingmanager.viewmodel.DetailViewModel
-import dagger.hilt.android.testing.HiltAndroidTest
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.verify
@@ -59,7 +58,7 @@ class DetailScreenTest {
             DetailScreen(viewModel = mockViewModel)
         }
 
-
+        Thread.sleep(1000)
         composeTestRule.onNodeWithText("Mocked Service Settings").assertIsDisplayed()
         composeTestRule.onNodeWithText("Setting 1").assertIsDisplayed()
         composeTestRule.onNodeWithText("Setting 2").assertIsDisplayed()
@@ -70,6 +69,6 @@ class DetailScreenTest {
             .performClick()
 
         verify { mockViewModel.toggleSetting("s2") }
+        Thread.sleep(1000)
     }
-
 }

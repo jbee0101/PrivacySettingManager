@@ -43,15 +43,18 @@ class NavigationTest {
 
         composeTestRule.waitForIdle()
 
+        Thread.sleep(1000)
         composeTestRule
             .onAllNodesWithText("Manage")[0]
             .performClick()
 
         composeTestRule.waitForIdle()
+        Thread.sleep(1000)
 
         composeTestRule.onNodeWithText(
             text = "Settings",
             substring = true
         ).assertIsDisplayed()
+        Thread.sleep(1000)
     }
 }

@@ -59,14 +59,13 @@ class HomeScreenTest {
         composeTestRule.setContent {
             HomeScreen(viewModel = mockViewModel, onServiceClick = {})
         }
+        Thread.sleep(1000)
 
         composeTestRule.onNodeWithText("Service 1").assertIsDisplayed()
         composeTestRule.onNodeWithText("Service 2").assertIsDisplayed()
         composeTestRule.onAllNodesWithText("Manage").assertCountEquals(2)
 
-        composeTestRule.waitUntil(timeoutMillis = 10_000) {
-            composeTestRule.onAllNodesWithText("Manage").fetchSemanticsNodes().size == 2
-        }
+        Thread.sleep(1000)
     }
 
     /**
@@ -92,6 +91,7 @@ class HomeScreenTest {
         val mockStateFlow: StateFlow<List<Service>> = MutableStateFlow(services)
 
         every { mockViewModel.uiState } returns mockStateFlow
+        Thread.sleep(1000)
 
         composeTestRule.setContent {
             HomeScreen(viewModel = mockViewModel, onServiceClick = mockOnServiceClick)
@@ -100,5 +100,6 @@ class HomeScreenTest {
         composeTestRule.onNode(hasText("Manage")).performClick()
 
         verify { mockOnServiceClick.invoke(services[0]) }
+        Thread.sleep(1000)
     }
 }
