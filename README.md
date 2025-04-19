@@ -35,3 +35,8 @@ Data access is encapsulated in a repository pattern to be able to switch between
 2. Open the project in Android Studio.
 3. Sync dependencies.
 4. Run the app on an emulator or a physical device.
+
+## Demo Video
+
+[App Demo](https://github.com/user-attachments/assets/40d20839-9280-41f8-af3b-85b897fd3d85)
+
